@@ -142,7 +142,6 @@
                 
                 if('系统消息' == message.nickname){
                 	message.nickname = '<font color="RED">' + message.nickname + '</font>';
-                	alert("message.nickname:"+message.nickname);
                 }
                 
                 var messageItem = '<li class="am-comment '
