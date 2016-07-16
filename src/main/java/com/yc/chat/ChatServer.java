@@ -28,9 +28,12 @@ import net.sf.json.JSONObject;
 public class ChatServer {
 
 	private Session session;
-	private static final Map<ChatServer, String> connections = new ConcurrentHashMap<ChatServer, String>();
+	private static final Map<ChatServer, String> 
+	connections = new ConcurrentHashMap<ChatServer, String>();
 
-	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // 日期格式化
+	// 日期格式化
+	private static final SimpleDateFormat 
+	DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	/**
 	 * @category 添加初始化操作
@@ -46,8 +49,10 @@ public class ChatServer {
 
 	/**
 	 * @category 接受客户端的消息，并把消息发送给所有连接的会话
-	 * @param message 客户端发来的消息
-	 * @param session 客户端的会话
+	 * @param message
+	 *            客户端发来的消息
+	 * @param session
+	 *            客户端的会话
 	 */
 	@OnMessage
 	public void getMessage(String message, Session session) {
@@ -73,7 +78,8 @@ public class ChatServer {
 		connections.remove(this);
 		// 如果这个人有在聊天室中发过言，则向聊天室中发送nikename已下线消息
 		if (StringUtils.isNotBlank(nikename)) {
-			String msg = "{'content':'<p>用户[ ".concat(nikename).concat(" ]下线了！<br/></p>','nickname':'系统消息'}");
+			String msg = "{'content':'<p>用户[ ".concat(nikename)
+					.concat(" ]下线了！<br/></p>','nickname':'系统消息'}");
 			broadcast(msg);// 这是告知所还在线聊天的人下线了
 		}
 	}
@@ -89,7 +95,8 @@ public class ChatServer {
 
 	/**
 	 * @category 广播消息
-	 * @param msg 消息JSON串
+	 * @param msg
+	 *            消息JSON串
 	 */
 	private void broadcast(String msg) {
 
